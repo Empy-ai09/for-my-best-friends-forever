@@ -344,7 +344,7 @@ body {
     animation: fadeIn 1s ease forwards 4.8s;
 }
 
-.wish-button {
+.action-button {
     background: linear-gradient(135deg, var(--rose), var(--dark-rose));
     color: var(--white);
     border: none;
@@ -358,12 +358,12 @@ body {
     margin: 10px;
 }
 
-.wish-button:hover {
+.action-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(255, 182, 193, 0.4);
 }
 
-.wish-button:active {
+.action-button:active {
     transform: translateY(-1px);
 }
 

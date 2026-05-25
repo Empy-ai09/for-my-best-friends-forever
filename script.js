@@ -3,23 +3,6 @@ setTimeout(() => {
     document.getElementById('loadingScreen').classList.add('hidden');
 }, 3500);
 
-// Make a wish function
-function makeWish() {
-    const wishes = [
-        "✨ Semoga semua impianmu tercapai!",
-        "🌟 Sukses selalu di segala hal!",
-        "💝 Bahagia terus sepanjang tahun!",
-        "🎯 Raih semua targetmu!",
-        "🌈 Hari-harimu penuh warna!",
-        "🦋 Terbang tinggi menggapai mimpi!",
-        "🌸 Selalu sehat dan ceria!",
-        "💫 Berkah melimpah untukmu!"
-    ];
-    
-    const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-    alert(randomWish);
-}
-
 // Celebration function with confetti
 function celebrate() {
     createConfetti();
