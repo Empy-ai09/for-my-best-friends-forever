@@ -1,107 +1,93 @@
-// Hide loading screen after animation
-setTimeout(() => {
-    document.getElementById('loadingScreen').classList.add('hidden');
-}, 3500);
+// ====== KONFIGURASI ======
+// Ganti URL galeri di sini:
+const GALLERY_URL = "https://example.com/galeri-nadya";
 
-// Celebration function with confetti
-function celebrate() {
-    createConfetti();
-    playBirthdaySong();
-}
+document.addEventListener("DOMContentLoaded", () => {
+  // Set gallery link
+  const galleryBtn = document.getElementById("galleryBtn");
+  if (galleryBtn) galleryBtn.href = GALLERY_URL;
 
-// Create confetti effect
-function createConfetti() {
-    const container = document.getElementById('confettiContainer');
-    const colors = ['#FFB6C1', '#FFE5E5', '#FFF8F0', '#E8989C', '#FFFFFF'];
-    
-    for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDelay = Math.random() * 0.5 + 's';
-            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
-            container.appendChild(confetti);
-            
-            setTimeout(() => confetti.remove(), 3000);
-        }, i * 30);
+  // Generate particles
+  const particles = document.getElementById("particles");
+  for (let i = 0; i < 18; i++) {
+    const s = document.createElement("span");
+    s.className = "bd-particle";
+    s.style.left = `${(i * 53) % 100}%`;
+    s.style.animationDelay = `${(i % 6) * 0.3}s`;
+    s.style.fontSize = `${0.7 + (i % 4) * 0.25}rem`;
+    s.textContent = i % 2 ? "✨" : "💗";
+    particles.appendChild(s);
+  }
+
+  const stageGift = document.getElementById("stage-gift");
+  const stageTitle = document.getElementById("stage-title");
+  const titleEl = document.getElementById("titleEl");
+  const dim = document.getElementById("dim");
+  const letterWrap = document.getElementById("letterWrap");
+  const giftBtn = document.getElementById("giftBtn");
+
+  let opened = false;
+  giftBtn.addEventListener("click", () => {
+    if (opened) return;
+    opened = true;
+
+    // Stage: dim
+    dim.classList.add("is-on");
+    stageGift.classList.remove("is-active");
+    stageGift.classList.add("is-hidden");
+
+    // Stage: title
+    setTimeout(() => {
+      stageTitle.classList.remove("is-hidden");
+      stageTitle.classList.add("is-active");
+      titleEl.classList.add("bd-title-in");
+    }, 1100);
+
+    // Stage: slide letter in
+    setTimeout(() => {
+      letterWrap.classList.remove("is-pre");
+      letterWrap.classList.add("is-sliding");
+    }, 4200);
+
+    setTimeout(() => {
+      letterWrap.classList.remove("is-sliding");
+      letterWrap.classList.add("is-in");
+      // Hide dim+title after letter is in
+      dim.classList.remove("is-on");
+      stageTitle.classList.remove("is-active");
+      stageTitle.classList.add("is-hidden");
+
+      // Reveal paragraphs
+      const paras = document.querySelectorAll("#letterBody .bd-para, #letterBody .bd-sign");
+      paras.forEach((p, i) => {
+        setTimeout(() => p.classList.add("is-in"), 600 + i * 1100);
+      });
+    }, 5300);
+  });
+
+  // Envelope
+  const envBtn = document.getElementById("envelopeBtn");
+  const secret = document.getElementById("secret");
+  const envHint = document.getElementById("envHint");
+  const hearts = document.getElementById("hearts");
+
+  envBtn.addEventListener("click", () => {
+    if (envBtn.classList.contains("is-open")) return;
+    envBtn.classList.add("is-open");
+    envBtn.setAttribute("aria-expanded", "true");
+    secret.classList.add("is-open");
+    secret.setAttribute("aria-hidden", "false");
+    if (envHint) envHint.style.display = "none";
+
+    // Burst hearts
+    for (let i = 0; i < 14; i++) {
+      const h = document.createElement("span");
+      h.className = "bd-heart";
+      h.textContent = "♥";
+      h.style.left = `${Math.random() * 100}%`;
+      h.style.animationDelay = `${Math.random() * 0.6}s`;
+      hearts.appendChild(h);
+      setTimeout(() => h.remove(), 3000);
     }
-}
-
-// Play birthday song (audio context)
-function playBirthdaySong() {
-    const notes = [
-        { freq: 262, duration: 400 }, // C
-        { freq: 262, duration: 200 }, // C
-        { freq: 294, duration: 600 }, // D
-        { freq: 262, duration: 600 }, // C
-        { freq: 349, duration: 600 }, // F
-        { freq: 330, duration: 1200 }, // E
-    ];
-    
-    if (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') {
-        const AudioContextClass = AudioContext || webkitAudioContext;
-        const audioContext = new AudioContextClass();
-        let startTime = audioContext.currentTime;
-        
-        notes.forEach(note => {
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
-            
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            
-            oscillator.frequency.value = note.freq;
-            oscillator.type = 'sine';
-            
-            gainNode.gain.setValueAtTime(0.3, startTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + note.duration / 1000);
-            
-            oscillator.start(startTime);
-            oscillator.stop(startTime + note.duration / 1000);
-            
-            startTime += note.duration / 1000;
-        });
-    }
-}
-
-// Reveal secret message
-function revealSecret() {
-    const secretMsg = document.getElementById('secretMessage');
-    if (secretMsg.style.display === 'block') {
-        secretMsg.style.display = 'none';
-    } else {
-        secretMsg.style.display = 'block';
-    }
-}
-
-// Add sparkle effect on mouse move
-document.addEventListener('mousemove', (e) => {
-    if (Math.random() > 0.95) {
-        const sparkle = document.createElement('div');
-        sparkle.style.position = 'fixed';
-        sparkle.style.left = e.clientX + 'px';
-        sparkle.style.top = e.clientY + 'px';
-        sparkle.style.width = '4px';
-        sparkle.style.height = '4px';
-        sparkle.style.background = '#FFB6C1';
-        sparkle.style.borderRadius = '50%';
-        sparkle.style.pointerEvents = 'none';
-        sparkle.style.zIndex = '9997';
-        sparkle.style.animation = 'sparkle-fade 1s ease forwards';
-        document.body.appendChild(sparkle);
-        
-        setTimeout(() => sparkle.remove(), 1000);
-    }
+  });
 });
-
-// Add sparkle animation
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes sparkle-fade {
-        0% { opacity: 1; transform: scale(1); }
-        100% { opacity: 0; transform: scale(0); }
-    }
-`;
-document.head.appendChild(style);

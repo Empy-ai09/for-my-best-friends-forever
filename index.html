@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Happy Birthday Nadyaa 🎂</title>
+  <meta name="description" content="Sebuah hadiah kecil untuk Nadyaa — surat dan kenangan." />
+  <meta property="og:title" content="Happy Birthday Nadyaa 🎂" />
+  <meta property="og:description" content="Sebuah hadiah kecil untuk Nadyaa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,400&family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="bd-root">
+    <div class="bd-bg" aria-hidden="true"></div>
+    <div class="bd-blob bd-blob-1" aria-hidden="true"></div>
+    <div class="bd-blob bd-blob-2" aria-hidden="true"></div>
+    <div class="bd-blob bd-blob-3" aria-hidden="true"></div>
+
+    <!-- Stage 1: Gift -->
+    <section class="bd-stage bd-gift-stage is-active" id="stage-gift">
+      <button type="button" class="bd-gift" id="giftBtn" aria-label="Buka hadiah">
+        <span class="bd-gift-glow"></span>
+        <svg viewBox="0 0 120 120" class="bd-gift-svg">
+          <defs>
+            <linearGradient id="gx" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f5c6c6" />
+              <stop offset="100%" stop-color="#d99a8a" />
+            </linearGradient>
+            <linearGradient id="gx2" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#fff" />
+              <stop offset="100%" stop-color="#ffe5e5" />
+            </linearGradient>
+          </defs>
+          <rect x="18" y="45" width="84" height="60" rx="8" fill="url(#gx)" />
+          <rect x="18" y="38" width="84" height="18" rx="6" fill="url(#gx2)" />
+          <rect x="54" y="38" width="12" height="67" fill="#fff" opacity="0.95" />
+          <path d="M60 38 C 40 18, 30 36, 60 42 C 90 36, 80 18, 60 38 Z" fill="#fff" stroke="#e8989c" stroke-width="1.2" />
+          <circle cx="60" cy="40" r="3.5" fill="#e8989c" />
+        </svg>
+      </button>
+      <p class="bd-gift-hint">Klik hadiahnya yaa 🎁</p>
+    </section>
+
+    <!-- Dim -->
+    <div class="bd-dim" id="dim"></div>
+
+    <!-- Stage 2: Title -->
+    <section class="bd-stage bd-title-stage is-hidden" id="stage-title">
+      <h1 class="bd-title" id="titleEl">
+        Happy Birthday <span>Nadyaa</span> 🎂✨
+      </h1>
+      <div class="bd-particles" id="particles" aria-hidden="true"></div>
+    </section>
+
+    <!-- Stage 3: Letter -->
+    <section class="bd-letter-wrap is-pre" id="letterWrap">
+      <article class="bd-letter">
+        <header class="bd-letter-head">
+          <p class="bd-eyebrow">untuk yang spesial</p>
+          <h2 class="bd-letter-title">Surat Kecil Untukmu 💌</h2>
+          <span class="bd-divider"></span>
+        </header>
+
+        <div class="bd-letter-body" id="letterBody">
+          <p class="bd-para">haiii nadyaaa, di hari spesialmu ini, aku mau bilang betapa beruntungnya aku ketemu kamu. sumpah orang kaya kamu emang cuma satu si wkwk. duniaa luass bangett nadd, untungnyaa kitaa bertemuuu nadd.</p>
+          <p class="bd-para">makasihh banyak udah mau bertahann, dengerin cerita random akuu, nungguin akuu, dan selalu ada buat aku. makasihh udah jadi sosok yang baik, yang selalu bisa bikin aku ketawa pas lagi capek.</p>
+          <p class="bd-para">Di tahun yang baru ini, semoga semuuaa impian dan mimpii kamuu tercapai. Semoga kamu selalu dikelilingi orang-orang yang baik kepadamuu aminn. dan semoga setiap langkah yang kamu ambil membawamu lebih dekat ke kebahagiaan yang kamu deserve bangett.</p>
+          <p class="bd-para">Keep shining bright, nadya. karena kamu cuman ada satu di dunia. 🌸</p>
+          <p class="bd-sign">— With love, your soulmate 💕</p>
+        </div>
+
+        <div class="bd-gallery-cta">
+          <p class="bd-gallery-label">ada satu tempat kecil buat kita ✨</p>
+          <a class="bd-gallery-btn" id="galleryBtn" href="https://example.com/galeri-nadya" target="_blank" rel="noopener noreferrer">
+            <span class="bd-gallery-icon">🌸</span>
+            <span>Buka Galeri Kenangan</span>
+            <span class="bd-gallery-arrow">→</span>
+          </a>
+        </div>
+
+        <div class="bd-note-area">
+          <button type="button" class="bd-envelope" id="envelopeBtn" aria-expanded="false" aria-label="Buka pesan rahasia">
+            <span class="bd-env-back"></span>
+            <span class="bd-env-body"></span>
+            <span class="bd-env-flap"></span>
+            <span class="bd-env-seal">♥</span>
+            <span class="bd-env-hint" id="envHint">psst… ada satu lagi</span>
+          </button>
+
+          <div class="bd-secret" id="secret" aria-hidden="true">
+            <p class="bd-secret-title">ini pesan dari akuu</p>
+            <p>aku bahagia banget sama kamu nadd sumpah, aku ngerasa aku lebi dewasa kalo sama kamu — AKUU CINTAA KAMUU.</p>
+            <p class="bd-secret-quote">akuu bakal nikahin kamuu, i really love you thatt anythingg 🩷</p>
+          </div>
+        </div>
+
+        <footer class="bd-foot">
+          <span>Crafted with 💕 by ZAHWAN — ur soulmate</span>
+        </footer>
+      </article>
+
+      <div class="bd-hearts" id="hearts" aria-hidden="true"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
