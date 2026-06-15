@@ -362,7 +362,7 @@ body {
   100% { transform: translateY(-70vh) scale(1.2); opacity: 0; }
 }
 
-.bd-gallery-cta { margin-top: 32px; text-align: center; }
+.bd-gallery-cta { margin-top: 60px; text-align: center; }
 .bd-gallery-label {
   font-family: "Cormorant Garamond", serif;
   font-style: italic;
