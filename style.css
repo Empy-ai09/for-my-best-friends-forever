@@ -332,15 +332,6 @@ body {
   color: var(--rose-gold);
 }
 
-.bd-foot {
-  margin-top: 36px;
-  text-align: center;
-  font-size: 0.78rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--muted-foreground);
-}
-
 .bd-hearts {
   position: fixed;
   inset: 0;
